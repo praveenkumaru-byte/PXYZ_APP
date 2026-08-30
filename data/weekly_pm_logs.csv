@@ -1,0 +1,4 @@
+Log_ID,Date,Asset_ID,Make,Model,PM_Completed_By,Tech_Signature,Q1_Status,Q1_Notes,Q2_Status,Q2_Notes,Q3_Status,Q3_Notes,Q4_Status,Q4_Notes,Q5_Status,Q5_Notes,Q6_Status,Q6_Notes,Q7_Status,Q7_Notes,Q8_Status,Q8_Notes,Q9_Status,Q9_Notes,Q10_Status,Q10_Notes,Q11_Status,Q11_Notes,Q12_Status,Q12_Notes,General_Notes,Attachment
+WPM-20260821023129,2026-08-21,IM1,Toshiba 250t,EC250SXV50-6A,Testing PM 1,Anthony S.,Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,,
+WPM-20260821023641,2026-08-21,IM1,Toshiba 250t,EC250SXV50-6A,Testing 2,Anthony S.,Good,,No Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,No Good,,Good,,Good,,testing 2 notes,
+WPM-20260821023817,2026-08-21,IM2,Toshiba 250t,EC250SXV50-6A,test 3,Anthony S.,No Good,,No Good,,No Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,Good,,test 3 with image - edited,data/attachments\IM18_image.jpg

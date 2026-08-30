@@ -1,0 +1,4 @@
+Log_ID,Date,Asset_ID,Make,Model,Plan_Type,PM_Completed_By,Tech_Signature,General_Notes,Attachment,Q1_Status,Q2_Status,Q3_Status,Q4_Status,Q5_Status,Q6_Status,Q7_Status,Q8_Status,Q9_Status,Q10_Status,Q11_Status,Q12_Status,Q13_Status,Q14_Status,Q15_Status,Q16_Status,Q17_Status,Q18_Status,Q19_Status,Q20_Status,Q21_Status,Q22_Status,Q23_Status,Q24_Status
+PM-20260830040723,2026-08-30,IM8,Toshiba 610t,EC610SXV50-26Y,3 Months,testing1,Anthony S.,,,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good
+PM-20260830040840,2026-08-30,IM14,Shibaura 390t,EC390SXV70-17A,Monthly,testing2,Anthony S.,,data/attachments\IM14_nameplate.jpg,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,
+PM-20260830091407,2026-08-30,IM9,Toshiba 610t,EC610SXV50-26Y,Weekly,testing weekly 1,Anthony S.,,,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,Good,,,,,,,,,,,,
