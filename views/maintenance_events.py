@@ -4,6 +4,9 @@ import os
 from datetime import datetime, date, timedelta
 from streamlit_calendar import calendar
 
+# Add this to your imports at the top:
+from utils.github_sync import push_to_github
+
 MASTER_PM_DB_PATH = 'data/master_pm_logs.csv'
 ATTACHMENTS_DIR = 'data/attachments'
 os.makedirs(ATTACHMENTS_DIR, exist_ok=True)
@@ -108,8 +111,15 @@ def load_pm_logs():
 def save_uploaded_file(uploaded_file):
     if uploaded_file is not None:
         file_path = os.path.join(ATTACHMENTS_DIR, uploaded_file.name)
+        file_bytes = uploaded_file.getbuffer()
+        
+        # Save locally
         with open(file_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
+            f.write(file_bytes)
+            
+        # NEW: Sync attachment to GitHub so it isn't lost on reboot
+        push_to_github(file_path, f"Upload attachment {uploaded_file.name}", file_bytes.tobytes())
+        
         return file_path
     return None
 
@@ -242,6 +252,8 @@ def render():
                     logs_df = load_pm_logs()
                     updated = pd.concat([logs_df, pd.DataFrame([log_dict])], ignore_index=True) if not logs_df.empty else pd.DataFrame([log_dict])
                     updated.to_csv(MASTER_PM_DB_PATH, index=False)
+                    # NEW: Sync Master PM Log to GitHub
+                    push_to_github(MASTER_PM_DB_PATH, f"Logged new PM for {m_id}", updated.to_csv(index=False))
                     
                     st.success(f"PM Closed! Next cycle ({next_pm_type}) queued for {next_date[:10]}.")
                     st.rerun()
@@ -327,6 +339,8 @@ def render():
                             if new_attachment:
                                 history_df.at[idx, "Attachment"] = save_uploaded_file(new_attachment)
                             history_df.to_csv(MASTER_PM_DB_PATH, index=False)
+                            # NEW: Sync Master PM Log edits to GitHub
+                            push_to_github(MASTER_PM_DB_PATH, f"Edited PM Log {log_to_edit}", history_df.to_csv(index=False))
                             st.success("✅ PM Log updated successfully!")
                             st.rerun()
         else:

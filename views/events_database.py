@@ -4,6 +4,9 @@ import os
 from datetime import timedelta
 from utils.data_processor import split_downtime_events
 
+# Add this to your imports at the top:
+from utils.github_sync import push_to_github
+
 # Path for our new editable database
 DB_PATH = 'data/events_cause_codes.csv'
 
@@ -142,9 +145,13 @@ def render():
             
             # Reset and drop the ID before saving so we keep the CSV perfectly clean
             df.reset_index(inplace=True)
-            df.drop(columns=['Row_ID'], inplace=True)
-            
-            # Save to CSV
+            df.drop(columns=['Row_ID'], inplace=True)      
+          
+            # Local Save
             df.to_csv(DB_PATH, index=False)
+            
+            # NEW: Push to GitHub
+            push_to_github(DB_PATH, "Update root cause codes via UI", df.to_csv(index=False))
+            
             st.success("✅ Cause codes successfully saved!")
-            st.rerun() # Refresh the page to reflect saved state
+            st.rerun()
